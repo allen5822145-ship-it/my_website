@@ -1,0 +1,364 @@
+	<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>貓咪宇宙第一可愛！</title>
+    
+    
+   <style>
+    /* 全域設定 */
+    body {
+        margin: 0;
+        padding: 0;
+        background-image: url("https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcRJ2KoZFlX0ysBp6MrFuWsLl9QbY7C83nstPws3hTiyR0tk7U5saDThFokIjb-AvHz_GLccTlrcUkkdRGU");
+        background-repeat: no-repeat;
+        background-position: right center;
+        background-size: 51.5%;
+        background-attachment: fixed;
+        background-color: #e5a93b; 
+        font-family: 'Segoe UI', Microsoft JhengHei, sans-serif;
+        color: #4a3728;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' style='font-size:32px;'><text y='32'>🥫</text></svg>") 16 16, auto;
+    }
+
+    button, .btn, a {
+        cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' style='font-size:32px;'><text y='32'>🍖</text></svg>") 16 16, pointer !important;
+    }
+
+    /* 標題區塊 */
+    header {
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        color: #d17a3a;
+        margin-bottom: 10px;
+    }
+
+    .main-container {
+        display: flex;
+        flex-direction: row;        /* 電腦版：左右並排 */
+        justify-content: center;
+        align-items: flex-start;
+        gap: 20px;                  /* 兩區塊間距 */
+        width: 90%;
+        max-width: 900px;           /* 限制最大寬度 */
+        margin: 20px auto;
+		
+    }
+
+
+    .map-card {
+        background: white;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(209, 122, 58, 0.15);
+        flex: 1;                    /* 彈性分配寬度 */
+        max-width: 400px;
+        box-sizing: border-box;
+    }
+
+    .map-card iframe {
+        width: 100%;
+        height: 380px;              /* 設定地圖高度 */
+        border-radius: 15px;
+        border: 4px solid #fceade;
+    }
+
+    .map-title {
+        text-align: center;
+        font-weight: bold;
+        color: #d17a3a;
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+    }
+
+    .card {
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(209, 122, 58, 0.15);
+        text-align: center;
+        flex: 1;                    /* 彈性分配寬度 */
+        max-width: 400px;
+        box-sizing: border-box;
+    }
+
+
+    .cat-img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 15px;
+        border: 4px solid #fceade;
+    }
+
+    p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin: 20px 0;
+    }
+
+    .btn-group {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 20px;
+    }
+
+    .btn {
+        background-color: #e58e4f;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        font-size: 0.95rem;
+        border-radius: 50px;
+        font-weight: bold;
+        transition: all 0.2s ease;
+        box-shadow: 0 4px 10px rgba(229, 142, 79, 0.3);
+    }
+
+    .btn:hover {
+        background-color: #d17a3a;
+        transform: scale(1.05);
+    }
+
+    .btn-secondary {
+        background-color: #a8cd89;
+        box-shadow: 0 4px 10px rgba(168, 205, 137, 0.3);
+    }
+
+    .btn-secondary:hover {
+        background-color: #8fb86e;
+    }
+
+    .counter {
+        margin-top: 20px;
+        font-size: 0.9rem;
+        color: #8a7360;
+        line-height: 1.8;
+    }
+
+    .toy-container {
+        background: #fff8f0;
+        border-radius: 15px;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 2px dashed #e58e4f;
+    }
+
+    .toy-cat {
+        position: relative;
+        width: 120px;
+        height: 90px;
+        margin: 0 auto;
+    }
+
+    .toy-face {
+        position: absolute;
+        bottom: 0;
+        width: 120px;
+        height: 80px;
+        background: #4a3728;
+        border-radius: 40px 40px 30px 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .toy-ear {
+        position: absolute;
+        top: 0;
+        width: 0;
+        height: 0;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-bottom: 35px solid #4a3728;
+    }
+    .toy-ear.left { left: 10px; transform: rotate(-15deg); }
+    .toy-ear.right { right: 10px; transform: rotate(15deg); }
+
+    .eye {
+        width: 30px;
+        height: 30px;
+        background: #fcd535;
+        border-radius: 50%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .pupil {
+        width: 12px;
+        height: 20px;
+        background: #000;
+        border-radius: 50%;
+        position: absolute;
+        transition: all 0.05s ease;
+    }
+
+    .toy-nose {
+        position: absolute;
+        bottom: 20px;
+        font-size: 10px;
+        color: #ffb6c1;
+    }
+
+
+    @media (max-width: 768px) {
+        body {
+            background-position: center top;
+            background-size: contain; 
+        }
+
+        .main-container {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .map-card, .card {
+            width: 100%;
+        }
+    }
+</style>
+    <link rel='stylesheet' type='text/css' href='mystyle.css'>
+</head>
+<body>
+
+    <header>
+        <h1>🐾 貓咪宇宙第一可愛 🐾</h1>
+        <h2>快來喵喵喵喵喵喵電感應,感覺到你和我種觸電反應</h2>
+        <p>世界上沒有什麼事是吸一口貓解決不了的，如果有，就吸兩口。</p>
+    </header>
+
+    
+    <div class="main-container">
+        <!-- 財神降臨：發票對獎卡片 -->
+        <div class="card invoice-card">
+            <div class="map-title">🧾 最近一期統一發票</div>
+            <div style="text-align: left; margin-top: 15px;">
+                <p style="margin: 8px 0;"><strong>🌟 特別獎：</strong><span style="color: #d17a3a; font-weight: bold;">{{ super_prize }}</span></p>
+                <p style="margin: 8px 0;"><strong>✨ 特獎：</strong><span style="color: #d17a3a; font-weight: bold;">{{ special_prize }}</span></p>
+                <p style="margin: 8px 0;"><strong>🎁 頭獎：</strong></p>
+                <div style="background: #fff8f0; padding: 10px; border-radius: 10px; font-size: 0.9rem; line-height: 1.6;">
+                    {% for p in first_prizes %}
+                        <div style="letter-spacing: 1px;">{{ p }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="map-card">
+            <div class="map-title">📍 抓貓秘密基地</div>
+            
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3623.239276495147!2d120.96568207590899!3d24.804354347481878!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346835c2f30bd877%3A0x64e26219df0e318!2z5paw56u55biC5pS_5pS_!5e0!3m2!1szh-TW!2stw!4v1710000000000!5m2!1szh-TW!2stw" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+
+       
+        <div class="card">
+            <div class="toy-container">
+                <div class="toy-cat">
+                    <div class="toy-ear left"></div>
+                    <div class="toy-ear right"></div>
+                    <div class="toy-face">
+                        <div class="eye">
+                            <div class="pupil" id="left-pupil"></div>
+                        </div>
+                        <div class="eye">
+                            <div class="pupil" id="right-pupil"></div>
+                        </div>
+                        <div class="toy-nose">▼</div>
+                    </div>
+                </div>
+                <p style="font-size: 0.85rem; color: #8a7360; margin: 5px 0 0 0;">移動罐頭游標，貓咪會一直盯著看喔！</p>
+            </div>
+
+            <img class="cat-img" src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=500" alt="可愛貓咪">
+            
+            <p id="cat-fact">貓咪的耳朵有 32 塊肌肉，可以獨立旋轉 180 度，精準捕捉你開罐頭的聲音！</p>
+            
+            <div class="btn-group">
+                <button class="btn" onclick="feedCat()">餵食肉泥 🍖</button>
+                <button class="btn btn-secondary" onclick="petCat()">瘋狂嚕貓 ❤️</button>
+            </div>
+            
+            <div class="counter">
+                <div>這隻貓咪今天已被餵食了 <span id="feed-number" style="font-weight: bold; color: #d17a3a;">0</span> 次</div>
+                <div>奴才今天已經瘋狂擼貓 <span id="pet-number" style="font-weight: bold; color: #8fb86e;">0</span> 次</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JavaScript 區域 -->
+    <script>
+        let feedCount = 0;
+        let petCount = 0;
+
+        const facts = [
+            "貓咪的耳朵有 32 塊肌肉，可以獨立旋轉 180 度，精準捕捉你開罐頭的聲音！",
+            "貓咪發出咕嚕聲不只是代表開心，有時候也是在自我療癒與釋放壓力喔！",
+            "據說貓咪的肉墊有著世界上最療癒的香味，類似烤麵包或爆米花的味道。",
+            "貓咪的肉墊是牠們全身上下唯一會流汗的地方喔！",
+            "黑貓在許多古老文化中其實是幸運與財富的象徵呢！"
+        ];
+
+        function changeFact() {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            document.getElementById("cat-fact").innerText = facts[randomIndex];
+        }
+
+        function feedCat() {
+            feedCount++;
+            document.getElementById("feed-number").innerText = feedCount;
+            changeFact();
+            if (feedCount === 5) {
+                alert("主人！貓咪肚子快要炸掉啦！主子對你的奴性非常滿意 🐾");
+            }
+        }
+
+        function petCat() {
+            petCount++;
+            document.getElementById("pet-number").innerText = petCount;
+            changeFact();
+            if (petCount === 10) {
+                alert("（喵～）主子被你擼得太舒服，發出了超級響亮的咕嚕聲！🥰");
+            }
+        }
+
+        
+        const pupils = document.querySelectorAll('.pupil');
+        window.addEventListener('mousemove', (e) => {
+            pupils.forEach((pupil) => {
+                const rect = pupil.getBoundingClientRect();
+                const eyeX = rect.left + rect.width / 2;
+                const eyeY = rect.top + rect.height / 2;
+                
+                const angle = Math.atan2(e.clientY - eyeY, e.clientX - eyeX);
+                const distance = 6;
+                
+                const x = Math.cos(angle) * distance;
+                const y = Math.sin(angle) * distance;
+                
+                pupil.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+    </script>
+
+</body>
+</html>
